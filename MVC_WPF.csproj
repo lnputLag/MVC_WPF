@@ -115,6 +115,9 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Controllers\AuthController.cs" />
+    <Compile Include="Data\Database\DBConnection.cs" />
+    <Compile Include="Data\SQL\AuthUser\AuthUserQueries.cs" />
     <Compile Include="Views\RegisterWindow.xaml.cs">
       <DependentUpon>RegisterWindow.xaml</DependentUpon>
     </Compile>
@@ -170,9 +173,7 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Controllers\" />
-    <Folder Include="Data\Database\" />
-    <Folder Include="Data\SQL\" />
+    <Folder Include="Data\SQL\RegisterUser\" />
     <Folder Include="Models\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
