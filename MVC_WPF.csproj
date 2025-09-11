@@ -116,7 +116,6 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="Controllers\AuthController.cs" />
-    <Compile Include="Controllers\NewRegisterController.cs" />
     <Compile Include="Controllers\RegisterController.cs" />
     <Compile Include="Data\Database\DBConnection.cs" />
     <Compile Include="Data\SQL\AuthUser\AuthUserQueries.cs" />

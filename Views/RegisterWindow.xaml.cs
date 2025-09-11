@@ -1,4 +1,5 @@
-﻿using MVC_WPF.Data.Database;
+﻿using MVC_WPF.Controllers;
+using MVC_WPF.Data.Database;
 using MVC_WPF.Helpers;
 using System;
 using System.ComponentModel;
@@ -27,7 +28,20 @@ namespace MVC_WPF.Views
 
         private void Reg_Button_Click(object sender, RoutedEventArgs e)
         {
+            string login = textBoxLogin.Text.Trim();
+            string pass = passBox.Password.Trim();
 
+            RegisterController controller = new RegisterController();
+
+            if (controller.NewRegisterUser(login, pass))
+            {
+                MessageBox.Show("Пользователь успешно зарегистрирован!");
+                this.Close();
+            }
+            else
+            {
+                MessageBox.Show("Пользователь с таким логином уже существует!");
+            }
         }
     }
 }
