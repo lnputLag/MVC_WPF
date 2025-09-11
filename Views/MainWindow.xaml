@@ -7,6 +7,37 @@
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
     <Grid>
-        
+        <DockPanel>
+            <Menu DockPanel.Dock="Top">
+                <MenuItem Header="911 Support">
+                    <MenuItem Header="Отпуск" />
+                    <MenuItem Header="Переработки" />
+                    <MenuItem Header="Журнал осмотра серверных" />
+                </MenuItem>
+                <MenuItem Header="TMC">
+                    <MenuItem Header="Перемещение техники" />
+                    <MenuItem Header="Ремонт" />
+                    <MenuItem Header="Ответственные по участкам" />
+                    <MenuItem Header="Отчёт" />
+                </MenuItem>
+                <MenuItem Header="Администрирование">
+                    <MenuItem Header="Radmin" />
+                </MenuItem>
+                <MenuItem Header="Серверные">
+                    <MenuItem Header="Серверная АБК-1" >
+                        <MenuItem Header="test" />
+                    </MenuItem>
+                    <MenuItem Header="Серверная АБК-2" />
+                    <MenuItem Header="Серверная АБК-3" />
+                    <MenuItem Header="Серверная РМЦ" />
+                    <MenuItem Header="Серверная БДМ-2" />
+                    <MenuItem Header="Серверная ЦЛТ" />
+                </MenuItem>
+                <MenuItem Header="Справка">
+                    <MenuItem Header="О программе" />
+                </MenuItem>
+            </Menu>
+            <TabControl x:Name="MainTabControl" />
+        </DockPanel>
     </Grid>
 </Window>

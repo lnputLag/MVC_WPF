@@ -1,6 +1,8 @@
 ﻿using MVC_WPF.Controllers;
 using MVC_WPF.Data.Database;
+using MVC_WPF.Helpers;
 using System;
+using System.ComponentModel;
 using System.Windows;
 
 
@@ -65,6 +67,14 @@ namespace MVC_WPF.Views
             RegisterWindow registerWindow = new RegisterWindow();
             registerWindow.Owner = this;
             registerWindow.Show();
+        }
+
+        //Создание флага для определния типа закрытия
+        private bool _isNavigation = false;
+
+        private void Login_Window_Closing(object sender, CancelEventArgs e)
+        {
+            WindowCloseHelper.ConfirmClose(this, e, _isNavigation);
         }
     }
 }

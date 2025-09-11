@@ -6,7 +6,8 @@
         xmlns:local="clr-namespace:MVC_WPF.Views"
         mc:Ignorable="d"
                 xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
-        Title="" Height="350" Width="400" WindowStartupLocation="CenterScreen" ResizeMode="NoResize">
+        Title="" Height="350" Width="400" WindowStartupLocation="CenterScreen" 
+        Closing="Login_Window_Closing" ResizeMode="NoResize">
     <Grid>
         <StackPanel>
             <TextBlock Text="Авторизация" FontSize="30" FontWeight="Bold" TextAlignment="Center" Padding="15"/>
