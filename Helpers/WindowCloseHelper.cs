@@ -4,7 +4,7 @@ using System.Windows;
 
 namespace MVC_WPF.Helpers
 {
-    public class WindowCloseHelper
+    public static class WindowCloseHelper
     {
         public static void ConfirmClose(Window window, CancelEventArgs e, bool isNavigation)
         {

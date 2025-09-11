@@ -118,6 +118,7 @@
     <Compile Include="Controllers\AuthController.cs" />
     <Compile Include="Data\Database\DBConnection.cs" />
     <Compile Include="Data\SQL\AuthUser\AuthUserQueries.cs" />
+    <Compile Include="Helpers\PasswordHelper.cs" />
     <Compile Include="Helpers\WindowCloseHelper.cs" />
     <Compile Include="Views\RegisterWindow.xaml.cs">
       <DependentUpon>RegisterWindow.xaml</DependentUpon>

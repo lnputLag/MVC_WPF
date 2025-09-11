@@ -1,4 +1,5 @@
 ﻿using MVC_WPF.Data.Database;
+using MVC_WPF.Helpers;
 using MySql.Data.MySqlClient;
 using System;
 using System.Collections.Generic;
@@ -16,13 +17,11 @@ namespace MVC_WPF.Controllers
         /// </summary>
         public bool ValidateUser(string login, string password)
         {
-            // Можно сразу хэшировать пароль
-            string passwordHash = Hash(password);
 
             var parameters = new MySqlParameter[]
             {
                 new MySqlParameter("@Username", login),
-                new MySqlParameter("@Password", passwordHash)
+                new MySqlParameter("@Password", PasswordHelper.Hash(password))
             };
 
             var result = DBConnection.Instance.ExecuteQuery(Data.SQL.AuthUser.AuthUserQueries.ValidateUser, parameters);
@@ -30,14 +29,5 @@ namespace MVC_WPF.Controllers
             return result.Rows.Count > 0;
         }
 
-        private string Hash(string password)
-        {
-            byte[] temp = Encoding.UTF8.GetBytes(password);
-            using (SHA1Managed sha1 = new SHA1Managed())
-            {
-                var hash = sha1.ComputeHash(temp);
-                return Convert.ToBase64String(hash);
-            }
-        }
     }
 }
