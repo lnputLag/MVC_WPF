@@ -1,12 +1,7 @@
 ﻿using MVC_WPF.Data.Database;
 using MVC_WPF.Helpers;
 using MySql.Data.MySqlClient;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Security.Cryptography;
-using System.Text;
-using System.Threading.Tasks;
+
 
 namespace MVC_WPF.Controllers
 {

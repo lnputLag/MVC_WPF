@@ -1,16 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using MVC_WPF.Data.Database;
+using MVC_WPF.Helpers;
+using System;
+using System.ComponentModel;
 using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
+
 
 namespace MVC_WPF.Views
 {
@@ -22,6 +15,19 @@ namespace MVC_WPF.Views
         public RegisterWindow()
         {
             InitializeComponent();
+            DBConnection.Instance.Init();
+        }
+
+        private bool _isNavigation = false;
+
+        private void Register_Window_Closing(object sender, CancelEventArgs e)
+        {
+            WindowCloseHelper.ConfirmClose(this, e, _isNavigation);
+        }
+
+        private void Reg_Button_Click(object sender, RoutedEventArgs e)
+        {
+
         }
     }
 }

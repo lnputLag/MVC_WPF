@@ -9,6 +9,9 @@ namespace MVC_WPF.Helpers
 {
     public static class PasswordHelper
     {
+        /// <summary>
+        /// Хэширование паролей
+        /// </summary>
         public static string Hash(string password)
         {
             using (SHA256 sha256 = SHA256.Create())
