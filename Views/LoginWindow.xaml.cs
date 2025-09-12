@@ -46,6 +46,7 @@ namespace MVC_WPF.Views
                 if (authController.ValidateUser(login, pass))
                 {
                     MessageBox.Show("Авторизация успешна!");
+                    _isNavigation = true;
                     MainWindow mainWindow = new MainWindow();
                     mainWindow.Show();
                     this.Close();

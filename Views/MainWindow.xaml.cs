@@ -1,5 +1,7 @@
-﻿using System;
+﻿using MVC_WPF.Helpers;
+using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -23,6 +25,14 @@ namespace MVC_WPF
         public MainWindow()
         {
             InitializeComponent();
+        }
+
+        //Создание флага для определния типа закрытия
+        private bool _isNavigation = false;
+
+        private void Main_Window_Closing(object sender, CancelEventArgs e)
+        {
+            WindowCloseHelper.ConfirmClose(this, e, _isNavigation);
         }
     }
 }
