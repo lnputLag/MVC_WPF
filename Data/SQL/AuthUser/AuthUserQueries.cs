@@ -6,6 +6,11 @@ using System.Threading.Tasks;
 
 namespace MVC_WPF.Data.SQL.AuthUser
 {
+    /// <summary>
+    /// Запрос авторизации
+    /// Проверка на существование
+    /// пользователя с указанными учётными данными
+    /// </summary>
     public static class AuthUserQueries
     {
         public const string ValidateUser = @"

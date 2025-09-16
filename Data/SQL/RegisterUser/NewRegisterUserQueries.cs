@@ -6,6 +6,11 @@ using System.Threading.Tasks;
 
 namespace MVC_WPF.Data.SQL.RegisterUser
 {
+    /// <summary>
+    /// Запрос на регистрацию пользователей
+    /// Предназначен для добавления новых пользователей в базу данных
+    /// в таблицу Users
+    /// </summary>
     public static class NewRegisterUserQueries
     {
         public const string NewRegisterUser = @"

@@ -21,7 +21,7 @@
                     <MenuItem Header="Отчёт" />
                 </MenuItem>
                 <MenuItem Header="Администрирование">
-                    <MenuItem Header="Radmin" />
+                    <MenuItem Header="Radmin" Click="Radmin_Item_Click" />
                 </MenuItem>
                 <MenuItem Header="Серверные">
                     <MenuItem Header="Серверная АБК-1" >

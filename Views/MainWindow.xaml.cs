@@ -34,5 +34,10 @@ namespace MVC_WPF
         {
             WindowCloseHelper.ConfirmClose(this, e, _isNavigation);
         }
+
+        private void Radmin_Item_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 }
