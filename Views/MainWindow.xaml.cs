@@ -1,19 +1,10 @@
 ﻿using MVC_WPF.Helpers;
+using MVC_WPF.Views.Pages;
 using System;
-using System.Collections.Generic;
 using System.ComponentModel;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
+
 
 namespace MVC_WPF
 {
@@ -35,9 +26,57 @@ namespace MVC_WPF
             WindowCloseHelper.ConfirmClose(this, e, _isNavigation);
         }
 
-        private void Radmin_Item_Click(object sender, RoutedEventArgs e)
+        private void AddTab(Page page, string title)
         {
+            // Проверяем, существует ли уже вкладка с таким заголовком
+            foreach (TabItem item in MainTabControl.Items)
+            {
+                if (item.Tag?.ToString() == title)
+                {
+                    MainTabControl.SelectedItem = item; // просто активируем её
+                    return;
+                }
+            }
 
+            // Создаём контейнер с кнопкой закрытия
+            DockPanel headerPanel = new DockPanel { LastChildFill = false };
+            TextBlock headerText = new TextBlock { Text = title, Margin = new Thickness(0, 0, 5, 0) };
+
+            Button closeButton = new Button
+            {
+                Content = "✕",
+                Width = 18,
+                Height = 18,
+                Padding = new Thickness(0),
+                Margin = new Thickness(2, 0, 0, 0)
+            };
+
+            // Создаём сам TabItem
+            TabItem tabItem = new TabItem
+            {
+                Tag = title, // чтобы потом найти по имени
+                Content = new Frame
+                {
+                    NavigationUIVisibility = System.Windows.Navigation.NavigationUIVisibility.Hidden,
+                    Content = page
+                }
+            };
+
+            // Кнопка закрытия вкладки
+            closeButton.Click += (s, e) => MainTabControl.Items.Remove(tabItem);
+
+            headerPanel.Children.Add(headerText);
+            headerPanel.Children.Add(closeButton);
+            tabItem.Header = headerPanel;
+
+            // Добавляем вкладку и активируем её
+            MainTabControl.Items.Add(tabItem);
+            MainTabControl.SelectedItem = tabItem;
+        }
+
+        private void MenuItem_Click(object sender, RoutedEventArgs e)
+        {
+            AddTab(new ABK2(), "ABK2");
         }
     }
 }
