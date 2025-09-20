@@ -14,7 +14,7 @@
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
         <StackPanel Grid.Row="0" Orientation="Horizontal" Margin="10">
-            <Button Content="Добавить" Width="100" Margin="0,0,10,0" />
+            <Button Content="Добавить" Width="100" Margin="0,0,10,0" Click="Button_Click" />
             <Button Content="Изменить" Width="100" Margin="0,0,10,0"/>
             <Button Content="Удалить" Width="100" Cursor="Hand" />
             <TextBlock Text="Фильтр по статусу картриджа:" VerticalAlignment="Center" Margin="10,0,10,0"/>
