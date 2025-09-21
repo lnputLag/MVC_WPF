@@ -1,0 +1,7 @@
+DROP TABLE IF EXISTS cartridges;
+DROP TABLE IF EXISTS cartridge_statuses;
+DROP TABLE IF EXISTS cartridge_types;
+DROP TABLE IF EXISTS cartridge_models;
+
+
+SHOW TABLE STATUS;

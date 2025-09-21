@@ -12,3 +12,35 @@ CREATE TABLE IF NOT EXISTS users (
     Username VARCHAR(50) NOT NULL UNIQUE,
     Password VARCHAR(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+-- Создание таблицы типы картриджей
+CREATE TABLE IF NOT EXISTS cartridge_types (
+    type_id INT AUTO_INCREMENT PRIMARY KEY,
+    type_name VARCHAR(50) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+-- Создание таблицы статусы картриджей
+CREATE TABLE IF NOT EXISTS cartridge_status (
+    status_id INT AUTO_INCREMENT PRIMARY KEY,
+    status_name VARCHAR(50) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+-- Создание таблицы моделей картриджей
+CREATE TABLE IF NOT EXISTS cartridge_models (
+    model_id INT AUTO_INCREMENT PRIMARY KEY,
+    model_name VARCHAR(50) NOT NULL,
+    total_quantity INT NOT NULL DEFAULT 0
+)ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+
+-- Создание общей таблицы картриджей
+CREATE TABLE IF NOT EXISTS cartridges (
+    cartridge_id INT AUTO_INCREMENT PRIMARY KEY,
+    model_id INT NOT NULL,
+    type_id INT NOT NULL,
+    status_id INT NOT NULL,
+    quantity INT NOT NULL DEFAULT 0,
+    FOREIGN KEY (model_id) REFERENCES cartridge_models(model_id),
+    FOREIGN KEY (type_id) REFERENCES cartridge_types(type_id),
+    FOREIGN KEY (status_id) REFERENCES cartridge_status(status_id)
+)ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;

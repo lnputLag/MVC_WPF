@@ -1,0 +1,17 @@
+
+-- Заполнение типов картриджей
+INSERT INTO cartridge_types (type_name) VALUES 
+('BW'),
+('Color'),
+('test');
+
+-- Заполнение статусов картриджей
+INSERT INTO cartridge_status (status_name) VALUES 
+('В резерве'),
+('Заправляются'),
+('Требуют заправки');
+
+
+-- Заполнение моделей картриджей
+INSERT INTO cartridge_models (model_name, total_quantity) 
+VALUES ('TK-1160', 5);
