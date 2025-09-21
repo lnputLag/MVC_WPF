@@ -131,9 +131,11 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="Controllers\AuthController.cs" />
+    <Compile Include="Controllers\CartridgeController.cs" />
     <Compile Include="Controllers\RegisterController.cs" />
     <Compile Include="Data\Database\DBConnection.cs" />
     <Compile Include="Data\SQL\AuthUser\AuthUserQueries.cs" />
+    <Compile Include="Data\SQL\Cartridges\CartridgeQueries.cs" />
     <Compile Include="Data\SQL\RegisterUser\NewRegisterUserQueries.cs" />
     <Compile Include="Data\SQL\RegisterUser\RegisterUserQueries.cs" />
     <Compile Include="Helpers\PasswordHelper.cs" />
