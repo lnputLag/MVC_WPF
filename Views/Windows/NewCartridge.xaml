@@ -28,14 +28,9 @@
         <ComboBox x:Name="TypeComboBox" Grid.Row="1"
                   materialDesign:HintAssist.Hint="BW/Color"
                   Style="{StaticResource MaterialDesignFloatingHintComboBox}"
-                  Margin="0,0,0,8">
-            <ComboBox.ItemTemplate>
-                <DataTemplate>
-                    <TextBlock Text="{Binding name}" 
-                    Foreground="{DynamicResource MaterialDesignBody}"/>
-                </DataTemplate>
-            </ComboBox.ItemTemplate>
-        </ComboBox>
+                  DisplayMemberPath="type_name"
+                  SelectedValuePath="type_id"
+                  Margin="0,0,0,8"/>
 
         <!--Количество--> 
         <TextBox x:Name="WorkNameTextBox1" Grid.Row="2"
@@ -45,16 +40,11 @@
 
         <!-- Статус картриджа -->
         <ComboBox x:Name="StatusComboBox" Grid.Row="3"
-           materialDesign:HintAssist.Hint="Статус картриджа"
-           Style="{StaticResource MaterialDesignFloatingHintComboBox}"
-           Margin="0,0,0,8">
-            <ComboBox.ItemTemplate>
-                <DataTemplate>
-                    <TextBlock Text="{Binding name}" 
-             Foreground="{DynamicResource MaterialDesignBody}"/>
-                </DataTemplate>
-            </ComboBox.ItemTemplate>
-        </ComboBox>
+                  materialDesign:HintAssist.Hint="Статус картриджа"
+                  Style="{StaticResource MaterialDesignFloatingHintComboBox}"
+                  DisplayMemberPath="status_name"
+                  SelectedValuePath="status_id"
+                  Margin="0,0,0,8"/>
         
         <!-- Кнопки -->
         <StackPanel Grid.Row="5" Orientation="Horizontal" HorizontalAlignment="Right">
@@ -63,7 +53,8 @@
                     Margin="0,0,10,0" />
             <Button Content="СОХРАНИТЬ" 
                     Style="{StaticResource MaterialDesignRaisedButton}"
-                    Background="{DynamicResource PrimaryHueMidBrush}" />
+                    Background="{DynamicResource PrimaryHueMidBrush}"
+                    Click="Save_Click"/>
         </StackPanel>
     </Grid>
 </Window>

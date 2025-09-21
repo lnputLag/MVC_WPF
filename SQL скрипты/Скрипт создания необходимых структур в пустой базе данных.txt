@@ -1,0 +1,14 @@
+-- Создание базы данных с кодировкой UTF-8
+CREATE DATABASE IF NOT EXISTS MVC_WPF 
+CHARACTER SET utf8mb4 
+COLLATE utf8mb4_unicode_ci;
+
+-- Использование созданной базы данных
+USE MVC_WPF;
+
+-- Создание таблицы users
+CREATE TABLE IF NOT EXISTS users (
+    id INT AUTO_INCREMENT NOT NULL PRIMARY KEY,
+    Username VARCHAR(50) NOT NULL UNIQUE,
+    Password VARCHAR(255) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;

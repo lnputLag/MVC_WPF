@@ -1,6 +1,8 @@
 ﻿using System.Windows.Controls;
 using System;
 using MVC_WPF.Views.Windows;
+using System.Data;
+using MVC_WPF.Controllers;
 
 
 namespace MVC_WPF.Views.Pages
@@ -15,10 +17,11 @@ namespace MVC_WPF.Views.Pages
             InitializeComponent();
         }
 
+
         private void Button_Click(object sender, System.Windows.RoutedEventArgs e)
         {
-            NewCartridge newCartridge = new NewCartridge();
-            newCartridge.Show();
+            var newCartridge = new Windows.NewCartridge();
+            newCartridge.ShowDialog();
         }
     }
 }
