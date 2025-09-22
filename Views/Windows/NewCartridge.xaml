@@ -20,7 +20,7 @@
 
         <!-- Модель картриджа -->
         <ComboBox x:Name="ModelComboBox" Grid.Row="0"
-           materialDesign:HintAssist.Hint="Тип картриджа"
+           materialDesign:HintAssist.Hint="Модель картриджа"
            Style="{StaticResource MaterialDesignFloatingHintComboBox}"
            Margin="0,0,0,8"/>
 

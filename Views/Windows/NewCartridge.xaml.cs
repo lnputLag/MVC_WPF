@@ -58,22 +58,11 @@ namespace MVC_WPF.Views.Windows
                     return;
                 }
 
-                // Проверка, что выбраны модель, тип и статус
-                if (ModelComboBox.SelectedValue == null)
+                if (ModelComboBox.SelectedValue == null ||
+                    TypeComboBox.SelectedValue == null ||
+                    StatusComboBox.SelectedValue == null)
                 {
-                    MessageBox.Show("Выберите модель картриджа!");
-                    return;
-                }
-
-                if (TypeComboBox.SelectedValue == null)
-                {
-                    MessageBox.Show("Выберите тип картриджа!");
-                    return;
-                }
-
-                if (StatusComboBox.SelectedValue == null)
-                {
-                    MessageBox.Show("Выберите статус картриджа!");
+                    MessageBox.Show("Выберите модель, тип и статус картриджа!");
                     return;
                 }
 
