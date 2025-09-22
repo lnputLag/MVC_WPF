@@ -3,6 +3,7 @@ using System.Data;
 using System;
 using MVC_WPF.Controllers;
 using MVC_WPF.Data.Database;
+using MVC_WPF.Models;
 
 namespace MVC_WPF.Views.Windows
 {
@@ -11,43 +12,43 @@ namespace MVC_WPF.Views.Windows
     /// </summary>
     public partial class NewCartridge : Window
     {
-        private DataTable _statuses;
         public NewCartridge()
         {
             InitializeComponent();
-            LoadTypes();
-            LoadStatuses();
+            LoadComboBoxes();
         }
 
-        private void LoadTypes()
-        {
-            string query = "SELECT type_id, type_name FROM cartridge_types";
-            DataTable dt = DBConnection.Instance.ExecuteQuery(query);
-            TypeComboBox.ItemsSource = dt.DefaultView;
-            TypeComboBox.DisplayMemberPath = "type_name";
-            TypeComboBox.SelectedValuePath = "type_id";
-        }
+        
 
-        private void LoadStatuses()
+        private void LoadComboBoxes()
         {
-            string query = "SELECT status_id, status_name FROM cartridge_status";
-            DataTable dt = DBConnection.Instance.ExecuteQuery(query);
-            StatusComboBox.ItemsSource = dt.DefaultView;
-            StatusComboBox.DisplayMemberPath = "status_name";
-            StatusComboBox.SelectedValuePath = "status_id";
+            var controller = new CartridgeController();
+
+            // Модели
+            ModelComboBox.ItemsSource = controller.GetModels();
+            ModelComboBox.DisplayMemberPath = "ModelName";
+            ModelComboBox.SelectedValuePath = "Id";
+
+            // Типы
+            TypeComboBox.ItemsSource = controller.GetTypes();
+            TypeComboBox.DisplayMemberPath = "TypeName";
+            TypeComboBox.SelectedValuePath = "Id";
+
+            // Статусы
+            StatusComboBox.ItemsSource = controller.GetStatuses();
+            StatusComboBox.DisplayMemberPath = "StatusName";
+            StatusComboBox.SelectedValuePath = "Id";
         }
 
         private void Save_Click(object sender, RoutedEventArgs e)
         {
             try
             {
-                // Читаем значения
-                string modelName = WorkNameTextBox.Text.Trim();
                 string quantityText = WorkNameTextBox1.Text.Trim();
 
-                if (string.IsNullOrEmpty(modelName) || string.IsNullOrEmpty(quantityText))
+                if (string.IsNullOrEmpty(quantityText))
                 {
-                    MessageBox.Show("Заполните все поля!");
+                    MessageBox.Show("Укажите количество!");
                     return;
                 }
 
@@ -57,17 +58,28 @@ namespace MVC_WPF.Views.Windows
                     return;
                 }
 
-                if (TypeComboBox.SelectedValue == null || StatusComboBox.SelectedValue == null)
+                // Проверка, что выбраны модель, тип и статус
+                if (ModelComboBox.SelectedValue == null)
                 {
-                    MessageBox.Show("Выберите тип и статус картриджа!");
+                    MessageBox.Show("Выберите модель картриджа!");
                     return;
                 }
 
+                if (TypeComboBox.SelectedValue == null)
+                {
+                    MessageBox.Show("Выберите тип картриджа!");
+                    return;
+                }
+
+                if (StatusComboBox.SelectedValue == null)
+                {
+                    MessageBox.Show("Выберите статус картриджа!");
+                    return;
+                }
+
+                int modelId = Convert.ToInt32(ModelComboBox.SelectedValue);
                 int typeId = Convert.ToInt32(TypeComboBox.SelectedValue);
                 int statusId = Convert.ToInt32(StatusComboBox.SelectedValue);
-
-                // Для теста можно сделать так:
-                int modelId = 1; // временно 
 
                 var controller = new CartridgeController();
                 bool success = controller.AddCartridge(modelId, typeId, statusId, quantity);

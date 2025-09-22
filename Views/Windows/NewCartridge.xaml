@@ -19,10 +19,11 @@
 
 
         <!-- Модель картриджа -->
-        <TextBox x:Name="WorkNameTextBox" Grid.Row="0"
-         materialDesign:HintAssist.Hint="Модель картриджа"
-         Style="{StaticResource MaterialDesignFloatingHintTextBox}"
-         Margin="0,0,0,8"/>
+        <ComboBox x:Name="ModelComboBox" Grid.Row="0"
+           materialDesign:HintAssist.Hint="Тип картриджа"
+           Style="{StaticResource MaterialDesignFloatingHintComboBox}"
+           Margin="0,0,0,8"/>
+
 
         <!-- Тип (Чёрно/белый или цветной) -->
         <ComboBox x:Name="TypeComboBox" Grid.Row="1"

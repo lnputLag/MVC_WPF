@@ -140,6 +140,9 @@
     <Compile Include="Data\SQL\RegisterUser\RegisterUserQueries.cs" />
     <Compile Include="Helpers\PasswordHelper.cs" />
     <Compile Include="Helpers\WindowCloseHelper.cs" />
+    <Compile Include="Models\CartridgeModel.cs" />
+    <Compile Include="Models\CartridgeStatus.cs" />
+    <Compile Include="Models\CartridgeType.cs" />
     <Compile Include="Views\Pages\ABK2.xaml.cs">
       <DependentUpon>ABK2.xaml</DependentUpon>
     </Compile>
