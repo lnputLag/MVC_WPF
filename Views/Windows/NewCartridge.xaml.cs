@@ -66,9 +66,8 @@ namespace MVC_WPF.Views.Windows
                 int typeId = Convert.ToInt32(TypeComboBox.SelectedValue);
                 int statusId = Convert.ToInt32(StatusComboBox.SelectedValue);
 
-                // ⚡ На данный момент модель мы не сохраняем в отдельной таблице cartridge_models
                 // Для теста можно сделать так:
-                int modelId = 1; // временно хардкод, потом сделаем добавление модели в таблицу cartridge_models
+                int modelId = 1; // временно 
 
                 var controller = new CartridgeController();
                 bool success = controller.AddCartridge(modelId, typeId, statusId, quantity);
@@ -87,11 +86,6 @@ namespace MVC_WPF.Views.Windows
             {
                 MessageBox.Show($"Ошибка: {ex.Message}");
             }
-        }
-
-        private void StatusComboBox_SelectionChanged(object sender, System.Windows.Controls.SelectionChangedEventArgs e)
-        {
-
         }
     }
 }
