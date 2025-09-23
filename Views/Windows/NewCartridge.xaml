@@ -29,8 +29,6 @@
         <ComboBox x:Name="TypeComboBox" Grid.Row="1"
                   materialDesign:HintAssist.Hint="BW/Color"
                   Style="{StaticResource MaterialDesignFloatingHintComboBox}"
-                  DisplayMemberPath="type_name"
-                  SelectedValuePath="type_id"
                   Margin="0,0,0,8"/>
 
         <!--Количество--> 
@@ -43,8 +41,6 @@
         <ComboBox x:Name="StatusComboBox" Grid.Row="3"
                   materialDesign:HintAssist.Hint="Статус картриджа"
                   Style="{StaticResource MaterialDesignFloatingHintComboBox}"
-                  DisplayMemberPath="status_name"
-                  SelectedValuePath="status_id"
                   Margin="0,0,0,8" />
         
         <!-- Кнопки -->
