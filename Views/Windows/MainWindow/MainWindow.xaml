@@ -39,6 +39,10 @@
                 <MenuItem Header="Справка">
                     <MenuItem Header="О программе" Click="Info_Program" />
                 </MenuItem>
+                <MenuItem Header="Песочница">
+                    <MenuItem Header="Погода" Click="MenuItem_Weather_App" />
+                    <MenuItem Header="Заметки" Click="MenuItem_Notes" />
+                </MenuItem>
             </Menu>
             <TabControl x:Name="MainTabControl" />
         </DockPanel>

@@ -5,6 +5,7 @@ using System;
 using System.ComponentModel;
 using System.Windows;
 using System.Windows.Controls;
+using MVC_WPF.Views.Pages.Sandbox;
 
 
 namespace MVC_WPF
@@ -99,6 +100,16 @@ namespace MVC_WPF
         private void MenuItem_Wotch_Server(object sender, RoutedEventArgs e)
         {
             AddTab(new WotchServer(), "Журнал");
+        }
+
+        private void MenuItem_Weather_App(object sender, RoutedEventArgs e)
+        {
+            AddTab(new WeatherApp(), "Погода");
+        }
+
+        private void MenuItem_Notes(object sender, RoutedEventArgs e)
+        {
+            AddTab(new Notes(), "Заметки");
         }
     }
 }
