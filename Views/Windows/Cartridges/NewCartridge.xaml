@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:MVC_WPF.Views.Windows"
         xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
         mc:Ignorable="d"
-        Title="" Height="320" Width="400">
+        Title="Добавление картриджа" Height="320" Width="400" Icon="/Views/Image/icon.png">
     <Grid Margin="15">
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto"/>

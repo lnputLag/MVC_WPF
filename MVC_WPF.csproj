@@ -140,23 +140,44 @@
     <Compile Include="Data\SQL\RegisterUser\RegisterUserQueries.cs" />
     <Compile Include="Helpers\PasswordHelper.cs" />
     <Compile Include="Helpers\WindowCloseHelper.cs" />
-    <Compile Include="Models\CartridgeModel.cs" />
-    <Compile Include="Models\CartridgeStatus.cs" />
-    <Compile Include="Models\CartridgeType.cs" />
-    <Compile Include="Views\Pages\ABK2.xaml.cs">
+    <Compile Include="Models\Cartridges\CartridgeModel.cs" />
+    <Compile Include="Models\Cartridges\CartridgeStatus.cs" />
+    <Compile Include="Models\Cartridges\CartridgeType.cs" />
+    <Compile Include="Views\Pages\InDevelopment\Processing.xaml.cs">
+      <DependentUpon>Processing.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Pages\InDevelopment\Vecation.xaml.cs">
+      <DependentUpon>Vecation.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Pages\InDevelopment\WotchServer.xaml.cs">
+      <DependentUpon>WotchServer.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Pages\ServerRooms\ABK2.xaml.cs">
       <DependentUpon>ABK2.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Views\Windows\NewCartridge.xaml.cs">
+    <Compile Include="Views\Windows\Cartridges\NewCartridge.xaml.cs">
       <DependentUpon>NewCartridge.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Views\Windows\RegisterWindow.xaml.cs">
+    <Compile Include="Views\Windows\AuthUsers\RegisterWindow.xaml.cs">
       <DependentUpon>RegisterWindow.xaml</DependentUpon>
     </Compile>
-    <Page Include="Views\Windows\LoginWindow.xaml">
+    <Page Include="Views\Pages\InDevelopment\Processing.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Views\Windows\MainWindow.xaml">
+    <Page Include="Views\Pages\InDevelopment\Vecation.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Pages\InDevelopment\WotchServer.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Windows\AuthUsers\LoginWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Windows\MainWindow\MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
@@ -164,22 +185,22 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="Views\Windows\LoginWindow.xaml.cs">
+    <Compile Include="Views\Windows\AuthUsers\LoginWindow.xaml.cs">
       <DependentUpon>LoginWindow.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Views\Windows\MainWindow.xaml.cs">
+    <Compile Include="Views\Windows\MainWindow\MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Page Include="Views\Pages\ABK2.xaml">
+    <Page Include="Views\Pages\ServerRooms\ABK2.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Views\Windows\NewCartridge.xaml">
+    <Page Include="Views\Windows\Cartridges\NewCartridge.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Views\Windows\RegisterWindow.xaml">
+    <Page Include="Views\Windows\AuthUsers\RegisterWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -211,7 +232,9 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Resource Include="Views\Image\icon.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="packages\MaterialDesignThemes.3.2.0\build\MaterialDesignThemes.targets" Condition="Exists('packages\MaterialDesignThemes.3.2.0\build\MaterialDesignThemes.targets')" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">

@@ -1,5 +1,6 @@
 ﻿using MVC_WPF.Helpers;
 using MVC_WPF.Views.Pages;
+using MVC_WPF.Views.Pages.InDevelopment;
 using System;
 using System.ComponentModel;
 using System.Windows;
@@ -77,6 +78,27 @@ namespace MVC_WPF
         private void MenuItem_Click(object sender, RoutedEventArgs e)
         {
             AddTab(new ABK2(), "ABK2");
+        }
+
+        private void Info_Program(object sender, RoutedEventArgs e)
+        {
+            MessageBox.Show("Данная программа разработана\n" +
+                "для Pet Project Курасова Дмитрия");
+        }
+
+        private void MenuItem_Vecation(object sender, RoutedEventArgs e)
+        {
+            AddTab(new Vecation(), "Отпуск");
+        }
+
+        private void MenuItem_Processing(object sender, RoutedEventArgs e)
+        {
+            AddTab(new Processing(), "Переработки");
+        }
+
+        private void MenuItem_Wotch_Server(object sender, RoutedEventArgs e)
+        {
+            AddTab(new WotchServer(), "Журнал");
         }
     }
 }
