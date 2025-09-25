@@ -1,9 +1,10 @@
-﻿using System.Windows;
-using System.Data;
-using System;
-using MVC_WPF.Controllers;
+﻿using MVC_WPF.Controllers;
 using MVC_WPF.Data.Database;
+using MVC_WPF.Helpers;
 using MVC_WPF.Models;
+using System;
+using System.ComponentModel;
+using System.Windows;
 
 namespace MVC_WPF.Views.Windows
 {
@@ -18,7 +19,7 @@ namespace MVC_WPF.Views.Windows
             LoadComboBoxes();
         }
 
-        
+        private bool _isNavigation = false;
 
         private void LoadComboBoxes()
         {
@@ -76,6 +77,7 @@ namespace MVC_WPF.Views.Windows
                 if (success)
                 {
                     MessageBox.Show("Картридж успешно добавлен!");
+                    this.DialogResult = true; 
                     this.Close();
                 }
                 else
@@ -87,6 +89,11 @@ namespace MVC_WPF.Views.Windows
             {
                 MessageBox.Show($"Ошибка: {ex.Message}");
             }
+        }
+
+        private void Main_Window_Closing(object sender, CancelEventArgs e)
+        {
+            WindowCloseHelper.ConfirmClose(this, e, _isNavigation);
         }
     }
 }

@@ -143,6 +143,7 @@
     <Compile Include="Data\SQL\RegisterUser\RegisterUserQueries.cs" />
     <Compile Include="Helpers\PasswordHelper.cs" />
     <Compile Include="Helpers\WindowCloseHelper.cs" />
+    <Compile Include="Models\Cartridges\Cartridge.cs" />
     <Compile Include="Models\Cartridges\CartridgeModel.cs" />
     <Compile Include="Models\Cartridges\CartridgeStatus.cs" />
     <Compile Include="Models\Cartridges\CartridgeType.cs" />

@@ -1,8 +1,9 @@
-﻿using System.Windows.Controls;
-using System;
+﻿using MVC_WPF.Controllers;
 using MVC_WPF.Views.Windows;
+using MySqlX.XDevAPI.Common;
+using System;
 using System.Data;
-using MVC_WPF.Controllers;
+using System.Windows.Controls;
 
 
 namespace MVC_WPF.Views.Pages
@@ -15,13 +16,25 @@ namespace MVC_WPF.Views.Pages
         public ABK2()
         {
             InitializeComponent();
+            LoadCartridges();
         }
 
+        private void LoadCartridges()
+        {
+            var controller = new CartridgeController();
+            ClientsGrid.ItemsSource = controller.GetCartridges();
+        }
 
-        private void Button_Click(object sender, System.Windows.RoutedEventArgs e)
+        private void New_Cartridge_Btn(object sender, System.Windows.RoutedEventArgs e)
         {
             var newCartridge = new Windows.NewCartridge();
-            newCartridge.ShowDialog();
+            bool? result = newCartridge.ShowDialog();
+
+            // если картридж успешно добавлен, обновляем список
+            if (result == true)
+            {
+                LoadCartridges();
+            }
         }
     }
 }

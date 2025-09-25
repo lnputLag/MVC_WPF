@@ -1,6 +1,7 @@
-﻿using MVC_WPF.Models;
-using MVC_WPF.Data.Database;
+﻿using MVC_WPF.Data.Database;
 using MVC_WPF.Data.SQL.Cartridges;
+using MVC_WPF.Models;
+using MVC_WPF.Models.Cartridges;
 using System;
 using System.Collections.Generic;
 using System.Data;
@@ -67,6 +68,25 @@ namespace MVC_WPF.Controllers
                 result.Add(new CartridgeStatus
                 {
                     Id = Convert.ToInt32(row["status_id"]),
+                    StatusName = row["status_name"].ToString()
+                });
+            }
+            return result;
+        }
+
+        public List<Cartridge> GetCartridges()
+        {
+            var result = new List<Cartridge>();
+            var dt = DBConnection.Instance.ExecuteQuery(CartridgeQueries.GetCartridges);
+
+            foreach (DataRow row in dt.Rows)
+            {
+                result.Add(new Cartridge
+                {
+                    Id = Convert.ToInt32(row["cartridge_id"]),
+                    ModelName = row["model_name"].ToString(),
+                    Quantity = Convert.ToInt32(row["quantity"]),
+                    TypeName = row["type_name"].ToString(),
                     StatusName = row["status_name"].ToString()
                 });
             }

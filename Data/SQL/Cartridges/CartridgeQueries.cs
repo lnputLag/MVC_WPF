@@ -26,5 +26,17 @@ namespace MVC_WPF.Data.SQL.Cartridges
         public const string GetStatuses = @"
             SELECT status_id, status_name 
             FROM cartridge_status";
+
+        //Общий запрос по всем картриджам
+        public const string GetCartridges = @"
+            SELECT c.cartridge_id,
+            m.model_name,
+            c.quantity,
+            t.type_name,
+            s.status_name
+            FROM cartridges c
+            JOIN cartridge_models m ON c.model_id = m.model_id
+            JOIN cartridge_types t ON c.type_id = t.type_id
+            JOIN cartridge_status s ON c.status_id = s.status_id";
     }
 }
