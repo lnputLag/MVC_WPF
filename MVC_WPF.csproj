@@ -145,12 +145,19 @@
     <Compile Include="Data\SQL\Cartridges\AddCartridgeQueries.cs" />
     <Compile Include="Data\SQL\RegisterUser\NewRegisterUserQueries.cs" />
     <Compile Include="Data\SQL\RegisterUser\RegisterUserQueries.cs" />
+    <Compile Include="Data\SQL\SupplierQueries\SupplierQueries.cs" />
+    <Compile Include="Factories\CartridgeFactory.cs" />
     <Compile Include="Helpers\PasswordHelper.cs" />
     <Compile Include="Helpers\WindowCloseHelper.cs" />
+    <Compile Include="Models\Cartridges\Business\BWCartridge.cs" />
+    <Compile Include="Models\Cartridges\Business\ColorCartridge.cs" />
+    <Compile Include="Models\Cartridges\Business\RicohCartridge.cs" />
     <Compile Include="Models\Cartridges\Cartridge.cs" />
+    <Compile Include="Models\Cartridges\Business\CartridgeBase.cs" />
     <Compile Include="Models\Cartridges\CartridgeModel.cs" />
     <Compile Include="Models\Cartridges\CartridgeStatus.cs" />
     <Compile Include="Models\Cartridges\CartridgeType.cs" />
+    <Compile Include="Models\Suppliers\Supplier.cs" />
     <Compile Include="Views\Pages\InDevelopment\Processing.xaml.cs">
       <DependentUpon>Processing.xaml</DependentUpon>
     </Compile>

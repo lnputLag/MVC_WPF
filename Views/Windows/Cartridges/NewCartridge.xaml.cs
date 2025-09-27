@@ -5,6 +5,10 @@ using MVC_WPF.Models;
 using System;
 using System.ComponentModel;
 using System.Windows;
+using MVC_WPF.Factories;
+using MVC_WPF.Models.Cartridges;
+using MVC_WPF.Models.Cartridges.Business;
+using MVC_WPF.Models.Suppliers;
 
 namespace MVC_WPF.Views.Windows
 {
@@ -19,7 +23,7 @@ namespace MVC_WPF.Views.Windows
             LoadComboBoxes();
         }
 
-        private bool _isNavigation = false;
+        private CartridgeFactory _factory = new CartridgeFactory();
 
         private void LoadComboBoxes()
         {
@@ -39,6 +43,12 @@ namespace MVC_WPF.Views.Windows
             StatusComboBox.ItemsSource = controller.GetStatuses();
             StatusComboBox.DisplayMemberPath = "StatusName";
             StatusComboBox.SelectedValuePath = "Id";
+
+            // Поставщики
+            SupplierComboBox.ItemsSource = controller.GetSuppliers();
+            SupplierComboBox.DisplayMemberPath = "Name";
+            SupplierComboBox.SelectedValuePath = "Id";
+
         }
 
         private void Save_Click(object sender, RoutedEventArgs e)
@@ -59,25 +69,72 @@ namespace MVC_WPF.Views.Windows
                     return;
                 }
 
-                if (ModelComboBox.SelectedValue == null ||
-                    TypeComboBox.SelectedValue == null ||
-                    StatusComboBox.SelectedValue == null)
+                if (ModelComboBox.SelectedItem == null ||
+                    TypeComboBox.SelectedItem == null ||
+                    StatusComboBox.SelectedItem == null ||
+                    SupplierComboBox.SelectedItem == null)
                 {
-                    MessageBox.Show("Выберите модель, тип и статус картриджа!");
+                    MessageBox.Show("Выберите модель, тип, статус и поставщика картриджа!");
                     return;
                 }
 
-                int modelId = Convert.ToInt32(ModelComboBox.SelectedValue);
-                int typeId = Convert.ToInt32(TypeComboBox.SelectedValue);
-                int statusId = Convert.ToInt32(StatusComboBox.SelectedValue);
+                // Получаем данные с формы
+                var selectedModel = ModelComboBox.SelectedItem as CartridgeModel;
+                var selectedType = TypeComboBox.SelectedItem as CartridgeType;
+                var selectedStatus = StatusComboBox.SelectedItem as CartridgeStatus;
+                var selectedSupplier = SupplierComboBox.SelectedItem as Supplier;
 
+                // Создаём объект картриджа через фабрику
+                CartridgeBase newCartridge = null;
+                string typeName = selectedType.TypeName;
+
+                if (typeName == "BW")
+                    newCartridge = new BWCartridge
+                    {
+                        ModelId = selectedModel.Id,
+                        TypeId = selectedType.Id,
+                        ModelName = selectedModel.ModelName,
+                        TypeName = typeName,
+                        Supplier = selectedSupplier,
+                        Status = selectedStatus,
+                        Quantity = quantity
+                    };
+                else if (typeName == "Color")
+                    newCartridge = new ColorCartridge
+                    {
+                        ModelId = selectedModel.Id,
+                        TypeId = selectedType.Id,
+                        ModelName = selectedModel.ModelName,
+                        TypeName = typeName,
+                        Supplier = selectedSupplier,
+                        Status = selectedStatus,
+                        Quantity = quantity
+                    };
+                else if (typeName == "RICOH")
+                    newCartridge = new RicohCartridge
+                    {
+                        ModelId = selectedModel.Id,
+                        TypeId = selectedType.Id,
+                        ModelName = selectedModel.ModelName,
+                        TypeName = typeName,
+                        Supplier = selectedSupplier,
+                        Status = selectedStatus,
+                        Quantity = quantity
+                    };
+                else
+                {
+                    MessageBox.Show("Неизвестный тип картриджа!");
+                    return;
+                }
+
+                // Сохраняем через контроллер
                 var controller = new CartridgeController();
-                bool success = controller.AddCartridge(modelId, typeId, statusId, quantity);
+                bool success = controller.AddCartridge(newCartridge);
 
                 if (success)
                 {
                     MessageBox.Show("Картридж успешно добавлен!");
-                    this.DialogResult = true; 
+                    this.DialogResult = true;
                     this.Close();
                 }
                 else
@@ -89,11 +146,6 @@ namespace MVC_WPF.Views.Windows
             {
                 MessageBox.Show($"Ошибка: {ex.Message}");
             }
-        }
-
-        private void Main_Window_Closing(object sender, CancelEventArgs e)
-        {
-            WindowCloseHelper.ConfirmClose(this, e, _isNavigation);
         }
     }
 }

@@ -1,7 +1,10 @@
+DROP DATABASE mvc_wpf
+
 DROP TABLE IF EXISTS cartridges;
 DROP TABLE IF EXISTS cartridge_statuses;
 DROP TABLE IF EXISTS cartridge_types;
 DROP TABLE IF EXISTS cartridge_models;
+DROP TABLE IF EXISTS suppliers;
 
 
 SHOW TABLE STATUS;

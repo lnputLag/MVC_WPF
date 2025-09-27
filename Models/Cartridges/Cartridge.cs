@@ -13,5 +13,6 @@ namespace MVC_WPF.Models.Cartridges
         public int Quantity { get; set; }
         public string TypeName { get; set; }
         public string StatusName { get; set; }
+        public string SupplierName { get; set; }
     }
 }

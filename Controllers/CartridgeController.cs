@@ -1,7 +1,9 @@
 ﻿using MVC_WPF.Data.Database;
 using MVC_WPF.Data.SQL.Cartridges;
+using MVC_WPF.Data.SQL.Supplier;
 using MVC_WPF.Models;
 using MVC_WPF.Models.Cartridges;
+using MVC_WPF.Models.Suppliers;
 using System;
 using System.Collections.Generic;
 using System.Data;
@@ -11,14 +13,18 @@ namespace MVC_WPF.Controllers
 {
     public class CartridgeController
     {
-        public bool AddCartridge(int modelId, int typeId, int statusId, int quantity)
+        public bool AddCartridge(CartridgeBase cartridge)
         {
+            if (cartridge == null)
+                return false;
+
             var parameters = new MySql.Data.MySqlClient.MySqlParameter[]
             {
-                new MySql.Data.MySqlClient.MySqlParameter("@ModelId", modelId),
-                new MySql.Data.MySqlClient.MySqlParameter("@TypeId", typeId),
-                new MySql.Data.MySqlClient.MySqlParameter("@StatusId", statusId),
-                new MySql.Data.MySqlClient.MySqlParameter("@Quantity", quantity)
+        new MySql.Data.MySqlClient.MySqlParameter("@ModelId", cartridge.ModelId),
+        new MySql.Data.MySqlClient.MySqlParameter("@TypeId", cartridge.TypeId),
+        new MySql.Data.MySqlClient.MySqlParameter("@StatusId", cartridge.Status.Id),
+        new MySql.Data.MySqlClient.MySqlParameter("@SupplierId", cartridge.Supplier.Id),
+        new MySql.Data.MySqlClient.MySqlParameter("@Quantity", cartridge.Quantity)
             };
 
             int result = DBConnection.Instance.ExecuteNonQuery(
@@ -75,6 +81,33 @@ namespace MVC_WPF.Controllers
             return result;
         }
 
+        // Метод получения всех поставщиков
+        public List<Supplier> GetSuppliers()
+        {
+            var result = new List<Supplier>();
+
+            try
+            {
+                var dt = DBConnection.Instance.ExecuteQuery(SupplierQueries.GetSuppliers);
+
+                foreach (DataRow row in dt.Rows)
+                {
+                    result.Add(new Supplier
+                    {
+                        Id = Convert.ToInt32(row["supplier_id"]),
+                        Name = row["supplier_name"].ToString(),
+                        ContactInfo = row["contact_info"].ToString()
+                    });
+                }
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("Ошибка при получении поставщиков: " + ex.Message);
+            }
+
+            return result;
+        }
+
         public List<Cartridge> GetCartridges()
         {
             var result = new List<Cartridge>();
@@ -88,7 +121,8 @@ namespace MVC_WPF.Controllers
                     ModelName = row["model_name"].ToString(),
                     Quantity = Convert.ToInt32(row["quantity"]),
                     TypeName = row["type_name"].ToString(),
-                    StatusName = row["status_name"].ToString()
+                    StatusName = row["status_name"].ToString(),
+                    SupplierName = row["supplier_name"].ToString()
                 });
             }
             return result;

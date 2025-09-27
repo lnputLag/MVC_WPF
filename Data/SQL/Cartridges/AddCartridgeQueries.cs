@@ -12,7 +12,7 @@ namespace MVC_WPF.Data.SQL.Cartridges
     public static class AddCartridgeQueries
     {
         public const string InsertCartridge = @"
-            INSERT INTO cartridges (model_id, type_id, status_id, quantity)
-            VALUES (@ModelId, @TypeId, @StatusId, @Quantity)";
+            INSERT INTO cartridges (model_id, type_id, status_id, supplier_id, quantity)
+            VALUES (@ModelId, @TypeId, @StatusId, @SupplierId, @Quantity)";
     }
 }

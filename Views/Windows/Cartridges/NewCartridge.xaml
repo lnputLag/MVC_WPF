@@ -6,9 +6,10 @@
         xmlns:local="clr-namespace:MVC_WPF.Views.Windows"
         xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
         mc:Ignorable="d"
-        Title="Добавление картриджа" Height="320" Width="400" Icon="/Views/Image/icon.png" Closing="Main_Window_Closing" >
+        Title="Добавление картриджа" Height="350" Width="400" Icon="/Views/Image/icon.png" >
     <Grid Margin="15">
         <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
             <RowDefinition Height="Auto"/>
             <RowDefinition Height="Auto"/>
             <RowDefinition Height="Auto"/>
@@ -42,9 +43,15 @@
                   materialDesign:HintAssist.Hint="Статус картриджа"
                   Style="{StaticResource MaterialDesignFloatingHintComboBox}"
                   Margin="0,0,0,8" />
-        
+
+        <!-- Выбор поставщика -->
+        <ComboBox x:Name="SupplierComboBox" Grid.Row="4"
+                  materialDesign:HintAssist.Hint="Выбор поставщика"
+                  Style="{StaticResource MaterialDesignFloatingHintComboBox}"
+                  Margin="0,0,0,8" />
+
         <!-- Кнопки -->
-        <StackPanel Grid.Row="5" Orientation="Horizontal" HorizontalAlignment="Right">
+        <StackPanel Grid.Row="6" Orientation="Horizontal" HorizontalAlignment="Right">
             <Button Content="ОТМЕНА" 
                     Style="{StaticResource MaterialDesignOutlinedButton}"
                     Margin="0,0,10,0" Cursor="Hand" />
