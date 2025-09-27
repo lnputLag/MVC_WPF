@@ -1,5 +1,4 @@
-﻿using MVC_WPF.Controllers;
-using MVC_WPF.Models.Cartridges.Business;
+﻿using MVC_WPF.Models.Cartridges.Business;
 using MVC_WPF.Models.Cartridges;
 using MVC_WPF.Models.Suppliers;
 using System;
@@ -8,7 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace MVC_WPF.Factories
+namespace MVC_WPF.Models.Factories
 {
     public class CartridgeFactory
     {

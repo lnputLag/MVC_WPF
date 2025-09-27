@@ -5,10 +5,10 @@ using MVC_WPF.Models;
 using System;
 using System.ComponentModel;
 using System.Windows;
-using MVC_WPF.Factories;
 using MVC_WPF.Models.Cartridges;
 using MVC_WPF.Models.Cartridges.Business;
 using MVC_WPF.Models.Suppliers;
+using MVC_WPF.Models.Factories;
 
 namespace MVC_WPF.Views.Windows
 {
@@ -133,6 +133,9 @@ namespace MVC_WPF.Views.Windows
 
                 if (success)
                 {
+                    //Вызов бизнес-логики
+                    newCartridge.Refill();
+
                     MessageBox.Show("Картридж успешно добавлен!");
                     this.DialogResult = true;
                     this.Close();
