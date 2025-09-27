@@ -6,6 +6,7 @@ using System;
 using System.Collections.Generic;
 using System.Data;
 
+
 namespace MVC_WPF.Controllers
 {
     public class CartridgeController
@@ -21,7 +22,7 @@ namespace MVC_WPF.Controllers
             };
 
             int result = DBConnection.Instance.ExecuteNonQuery(
-                CartridgeQueries.InsertCartridge, parameters);
+                AddCartridgeQueries.InsertCartridge, parameters);
 
             return result > 0;
         }
@@ -29,7 +30,7 @@ namespace MVC_WPF.Controllers
         public List<CartridgeModel> GetModels()
         {
             var result = new List<CartridgeModel>();
-            var dt = DBConnection.Instance.ExecuteQuery(CartridgeQueries.GetModels);
+            var dt = DBConnection.Instance.ExecuteQuery(CartridgeModelQueries.GetModels);
 
             foreach (DataRow row in dt.Rows)
             {
@@ -45,7 +46,7 @@ namespace MVC_WPF.Controllers
         public List<CartridgeType> GetTypes()
         {
             var result = new List<CartridgeType>();
-            var dt = DBConnection.Instance.ExecuteQuery(CartridgeQueries.GetTypes);
+            var dt = DBConnection.Instance.ExecuteQuery(CartridgeTypesQueries.GetTypes);
 
             foreach (DataRow row in dt.Rows)
             {
@@ -61,7 +62,7 @@ namespace MVC_WPF.Controllers
         public List<CartridgeStatus> GetStatuses()
         {
             var result = new List<CartridgeStatus>();
-            var dt = DBConnection.Instance.ExecuteQuery(CartridgeQueries.GetStatuses);
+            var dt = DBConnection.Instance.ExecuteQuery(CartridgeStatusQueries.GetStatuses);
 
             foreach (DataRow row in dt.Rows)
             {

@@ -138,7 +138,11 @@
     <Compile Include="Controllers\RegisterController.cs" />
     <Compile Include="Data\Database\DBConnection.cs" />
     <Compile Include="Data\SQL\AuthUser\AuthUserQueries.cs" />
+    <Compile Include="Data\SQL\Cartridges\CartridgeModelQueries.cs" />
     <Compile Include="Data\SQL\Cartridges\CartridgeQueries.cs" />
+    <Compile Include="Data\SQL\Cartridges\CartridgeStatusQueries.cs" />
+    <Compile Include="Data\SQL\Cartridges\CartridgeTypesQueries.cs" />
+    <Compile Include="Data\SQL\Cartridges\AddCartridgeQueries.cs" />
     <Compile Include="Data\SQL\RegisterUser\NewRegisterUserQueries.cs" />
     <Compile Include="Data\SQL\RegisterUser\RegisterUserQueries.cs" />
     <Compile Include="Helpers\PasswordHelper.cs" />

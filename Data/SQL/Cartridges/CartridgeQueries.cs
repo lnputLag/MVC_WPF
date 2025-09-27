@@ -7,27 +7,11 @@ using System.Threading.Tasks;
 namespace MVC_WPF.Data.SQL.Cartridges
 {
     /// <summary>
-    /// Лучше все запросы отдельно?
+    /// Получение полной информации о картридже
+    /// полученной из нескольких таблиц
     /// </summary>
     public static class CartridgeQueries
     {
-        public const string InsertCartridge = @"
-            INSERT INTO cartridges (model_id, type_id, status_id, quantity)
-            VALUES (@ModelId, @TypeId, @StatusId, @Quantity)";
-
-        public const string GetModels = @"
-            SELECT model_id, model_name 
-            FROM cartridge_models";
-
-        public const string GetTypes = @"
-            SELECT type_id, type_name 
-            FROM cartridge_types";
-
-        public const string GetStatuses = @"
-            SELECT status_id, status_name 
-            FROM cartridge_status";
-
-        //Общий запрос по всем картриджам
         public const string GetCartridges = @"
             SELECT c.cartridge_id,
             m.model_name,
