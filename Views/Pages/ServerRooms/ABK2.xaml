@@ -23,7 +23,8 @@
                     Click="DeleteCartridge_Btn"/>
             <TextBlock Text="Фильтр по статусу картриджа:" VerticalAlignment="Center" 
                        Margin="10,0,10,0"/>
-            <ComboBox Width="150" />
+            <ComboBox x:Name="StatusFilterComboBox" Width="150"
+                      SelectionChanged="StatusFilterComboBox_SelectionChanged"/>
         </StackPanel>
 
         <Grid Grid.Row="1">

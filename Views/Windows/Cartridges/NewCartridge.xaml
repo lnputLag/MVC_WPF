@@ -54,7 +54,7 @@
         <StackPanel Grid.Row="6" Orientation="Horizontal" HorizontalAlignment="Right">
             <Button Content="ОТМЕНА" 
                     Style="{StaticResource MaterialDesignOutlinedButton}"
-                    Margin="0,0,10,0" Cursor="Hand" />
+                    Margin="0,0,10,0" Cursor="Hand" Click="Cancellation_Click" />
             <Button Content="СОХРАНИТЬ" 
                     Style="{StaticResource MaterialDesignRaisedButton}"
                     Background="{DynamicResource PrimaryHueMidBrush}"

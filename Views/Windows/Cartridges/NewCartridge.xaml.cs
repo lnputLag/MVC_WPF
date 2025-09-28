@@ -181,5 +181,11 @@ namespace MVC_WPF.Views.Windows
                 MessageBox.Show($"Ошибка: {ex.Message}");
             }
         }
+
+        private void Cancellation_Click(object sender, RoutedEventArgs e)
+        {
+            _editingCartridge = null; // сброс редактируемого объекта
+            FormHelper.ClearForm(ModelComboBox, TypeComboBox, StatusComboBox, SupplierComboBox, QuantityTextBox, SaveButton);
+        }
     }
 }
