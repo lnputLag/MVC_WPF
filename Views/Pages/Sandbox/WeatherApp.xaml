@@ -9,6 +9,10 @@
       Title="WeatherApp">
 
     <Grid Margin ="10" Background="White">
-        
+        <Label Content="Погодная страница" HorizontalAlignment="Center" Margin="0,146,0,0" VerticalAlignment="Top" FontSize="20"/>
+        <TextBox x:Name="UserCityTextBox" HorizontalAlignment="Center" Margin="0,215,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="280"/>
+        <Button x:Name="GetWeatherBtn" Content="Получить погоду" HorizontalAlignment="Left" Margin="312,297,0,0" VerticalAlignment="Top" Click="GetWeatherBtn_Click"/>
+        <Label x:Name="WeatherResults" Content="" HorizontalAlignment="Center" Margin="0,363,0,0" VerticalAlignment="Top" Width="280"/>
+
     </Grid>
 </Page>
