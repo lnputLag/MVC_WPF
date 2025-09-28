@@ -58,7 +58,7 @@
             <Button Content="СОХРАНИТЬ" 
                     Style="{StaticResource MaterialDesignRaisedButton}"
                     Background="{DynamicResource PrimaryHueMidBrush}"
-                    Click="Save_Click"/>
+                    Click="Save_Click" x:Name="SaveButton"/>
         </StackPanel>
     </Grid>
 </Window>

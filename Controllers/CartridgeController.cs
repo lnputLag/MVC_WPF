@@ -43,7 +43,8 @@ namespace MVC_WPF.Controllers
                 new MySql.Data.MySqlClient.MySqlParameter("@TypeId", cartridge.TypeId),
                 new MySql.Data.MySqlClient.MySqlParameter("@StatusId", cartridge.Status.Id),
                 new MySql.Data.MySqlClient.MySqlParameter("@SupplierId", cartridge.Supplier.Id),
-                new MySql.Data.MySqlClient.MySqlParameter("@Quantity", cartridge.Quantity)
+                new MySql.Data.MySqlClient.MySqlParameter("@Quantity", cartridge.Quantity),
+                new MySql.Data.MySqlClient.MySqlParameter("@CartridgeId", cartridge.Id)
             };
 
             int result = DBConnection.Instance.ExecuteNonQuery(
@@ -139,26 +140,6 @@ namespace MVC_WPF.Controllers
             return result;
         }
 
-        //public List<Cartridge> GetCartridges()
-        //{
-        //    var result = new List<Cartridge>();
-        //    var dt = DBConnection.Instance.ExecuteQuery(CartridgeQueries.GetCartridges);
-
-        //    foreach (DataRow row in dt.Rows)
-        //    {
-        //        result.Add(new Cartridge
-        //        {
-        //            Id = Convert.ToInt32(row["cartridge_id"]),
-        //            ModelName = row["model_name"].ToString(),
-        //            Quantity = Convert.ToInt32(row["quantity"]),
-        //            TypeName = row["type_name"].ToString(),
-        //            StatusName = row["status_name"].ToString(),
-        //            SupplierName = row["supplier_name"].ToString()
-        //        });
-        //    }
-        //    return result;
-        //}
-
         public List<CartridgeBase> GetCartridges()
         {
             var result = new List<CartridgeBase>();
@@ -182,7 +163,6 @@ namespace MVC_WPF.Controllers
                 cartridge.TypeId = Convert.ToInt32(row["type_id"]);
                 cartridge.Quantity = Convert.ToInt32(row["quantity"]);
 
-                // Если нужно, можно подтянуть ещё статус
                 cartridge.Status = new CartridgeStatus
                 {
                     Id = Convert.ToInt32(row["status_id"]),

@@ -42,7 +42,21 @@ namespace MVC_WPF.Views.Pages
 
         private void EditCartridge_Btn(object sender, System.Windows.RoutedEventArgs e)
         {
-
+            if (ListCartridges.SelectedItem is CartridgeBase selectedCartridge)
+            {
+                var editWindow = new NewCartridge();
+                editWindow.LoadComboBoxes(); // сначала загружаем все ComboBox
+                editWindow.LoadCartridgeForEditing(selectedCartridge); // затем заполняем данные
+                bool? result = editWindow.ShowDialog();
+                if (result == true)
+                {
+                    LoadCartridges(); // обновляем таблицу
+                }
+                else
+                {
+                    MessageBox.Show("Выберите картридж для редактирования.");
+                }
+            }
         }
 
         private void DeleteCartridge_Btn(object sender, System.Windows.RoutedEventArgs e)
