@@ -1,4 +1,5 @@
 ﻿using MVC_WPF.Controllers;
+using MVC_WPF.Helpers;
 using MVC_WPF.Models.Cartridges;
 using MVC_WPF.Views.Windows;
 using MySqlX.XDevAPI.Common;
@@ -63,22 +64,11 @@ namespace MVC_WPF.Views.Pages
         {
             if (ListCartridges.SelectedItem is CartridgeBase selectedCartridge)
             {
-                var result = MessageBox.Show(
-                    $"Вы уверена, что хотите удалить картридж {selectedCartridge.ModelName}?",
-                    "Подтверждение", MessageBoxButton.YesNo, MessageBoxImage.Warning);
-                if (result == MessageBoxResult.Yes)
-                {
-                    var controller = new CartridgeController();
-                    if (controller.DeleteCartridge(selectedCartridge.Id))
-                    {
-                        MessageBox.Show("Картридж удалён");
-                        LoadCartridges(); // обновляем таблицу
-                    }
-                    else
-                    {
-                        MessageBox.Show("Ошибка при удалении картриджа");
-                    }
-                }
+                CartridgeHelper.ConfirmDeleteCartridge(selectedCartridge, LoadCartridges);
+            }
+            else
+            {
+                MessageBox.Show("Выберите картридж для удаления");
             }
         }
     }

@@ -25,7 +25,6 @@ namespace MVC_WPF.Views.Windows
         }
 
         private CartridgeBase _editingCartridge = null;
-        private CartridgeFactory _factory = new CartridgeFactory();
 
         /// <summary>
         /// Загрузка всех ComboBox значениями из БД
@@ -84,7 +83,7 @@ namespace MVC_WPF.Views.Windows
                 .FirstOrDefault(sup => sup.Id == cartridge.Supplier.Id);
 
             // Заполняем количество
-            WorkNameTextBox1.Text = cartridge.Quantity.ToString();
+            QuantityTextBox.Text = cartridge.Quantity.ToString();
 
             // Меняем текст кнопки на "Сохранить изменения"
             SaveButton.Content = "Сохранить изменения";
@@ -97,7 +96,7 @@ namespace MVC_WPF.Views.Windows
         {
             try
             {
-                string quantityText = WorkNameTextBox1.Text.Trim();
+                string quantityText = QuantityTextBox.Text.Trim();
 
                 if (string.IsNullOrEmpty(quantityText))
                 {
@@ -126,9 +125,6 @@ namespace MVC_WPF.Views.Windows
                 var selectedStatus = StatusComboBox.SelectedItem as CartridgeStatus;
                 var selectedSupplier = SupplierComboBox.SelectedItem as Supplier;
 
-
-
-
                 var controller = new CartridgeController();
                 bool success = false;
 
@@ -148,29 +144,22 @@ namespace MVC_WPF.Views.Windows
                 else
                 {
                     // Создаём новый картридж через фабрику
-                    CartridgeBase newCartridge = null;
-                    switch (selectedType.TypeName)
+                    CartridgeBase newCartridge = CartridgeFactory.CreateCartridge(
+                        selectedType.TypeName,
+                        selectedModel.ModelName,
+                        selectedSupplier
+                    );
+
+                    if (newCartridge == null)
                     {
-                        case "BW":
-                            newCartridge = new BWCartridge();
-                            break;
-                        case "Color":
-                            newCartridge = new ColorCartridge();
-                            break;
-                        case "RICOH":
-                            newCartridge = new RicohCartridge();
-                            break;
-                        default:
-                            MessageBox.Show("Неизвестный тип картриджа!");
-                            return;
+                        MessageBox.Show("Неизвестный тип картриджа!");
+                        return;
                     }
 
+                    // Заполняем оставшиеся поля
                     newCartridge.ModelId = selectedModel.Id;
                     newCartridge.TypeId = selectedType.Id;
-                    newCartridge.ModelName = selectedModel.ModelName;
-                    newCartridge.TypeName = selectedType.TypeName;
                     newCartridge.Status = selectedStatus;
-                    newCartridge.Supplier = selectedSupplier;
                     newCartridge.Quantity = quantity;
 
                     success = controller.AddCartridge(newCartridge);
