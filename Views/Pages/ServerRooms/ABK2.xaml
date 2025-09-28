@@ -13,14 +13,18 @@
             <RowDefinition Height="Auto"/>
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
-        <StackPanel Grid.Row="0" Orientation="Horizontal" Margin="10">
-            <Button Content="Добавить" Width="100" Margin="0,0,10,0" Click="New_Cartridge_Btn" />
-            <Button Content="Изменить" Width="100" Margin="0,0,10,0"/>
-            <Button Content="Удалить" Width="100" Cursor="Hand" />
-            <TextBlock Text="Фильтр по статусу картриджа:" VerticalAlignment="Center" Margin="10,0,10,0"/>
+
+        <StackPanel x:Name="CartridgeGrid" Grid.Row="0" Orientation="Horizontal" Margin="10">
+            <Button Content="Добавить" Width="100" Margin="0,0,10,0" 
+                    Click="New_Cartridge_Btn" />
+            <Button Content="Изменить" Width="100" Margin="0,0,10,0" 
+                    Click="EditCartridge_Btn"/>
+            <Button Content="Удалить" Width="100" Cursor="Hand" 
+                    Click="DeleteCartridge_Btn"/>
+            <TextBlock Text="Фильтр по статусу картриджа:" VerticalAlignment="Center" 
+                       Margin="10,0,10,0"/>
             <ComboBox Width="150" />
         </StackPanel>
-
 
         <Grid Grid.Row="1">
             <Grid.ColumnDefinitions>
@@ -29,13 +33,13 @@
             </Grid.ColumnDefinitions>
 
             <!-- Таблица картриджей -->
-            <DataGrid x:Name="ClientsGrid" Grid.Column="0" Margin="5" 
-                                  AutoGenerateColumns="False" IsReadOnly="True">
+            <DataGrid x:Name="ListCartridges" Grid.Column="0" Margin="5" 
+                           AutoGenerateColumns="False" IsReadOnly="True">
                 <DataGrid.Columns>
                     <DataGridTextColumn Header="Модель картриджа" Binding="{Binding ModelName}" />
                     <DataGridTextColumn Header="Тип картриджа" Binding="{Binding TypeName}" />
-                    <DataGridTextColumn Header="Статус картриджа" Binding="{Binding StatusName}" />
-                    <DataGridTextColumn Header="Поставщик" Binding="{Binding SupplierName}" />
+                    <DataGridTextColumn Header="Статус картриджа" Binding="{Binding Status.StatusName}" />
+                    <DataGridTextColumn Header="Поставщик" Binding="{Binding Supplier.Name}" />
                     <DataGridTextColumn Header="Количество" Binding="{Binding Quantity}" />
                 </DataGrid.Columns>
             </DataGrid>

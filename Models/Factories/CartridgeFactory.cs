@@ -18,7 +18,7 @@ namespace MVC_WPF.Models.Factories
         /// <param name="modelName">Модель картриджа</param>
         /// <param name="supplier">Поставщик картриджа</param>
         /// <returns>Конкретный объект CartridgeBase</returns>
-        public CartridgeBase CreateCartridge(string typeName, string modelName, Supplier supplier)
+        public static CartridgeBase CreateCartridge(string typeName, string modelName, Supplier supplier)
         {
             CartridgeBase cartridge = null;
 

@@ -1,8 +1,10 @@
 ﻿using MVC_WPF.Controllers;
+using MVC_WPF.Models.Cartridges;
 using MVC_WPF.Views.Windows;
 using MySqlX.XDevAPI.Common;
 using System;
 using System.Data;
+using System.Windows;
 using System.Windows.Controls;
 
 
@@ -22,7 +24,8 @@ namespace MVC_WPF.Views.Pages
         private void LoadCartridges()
         {
             var controller = new CartridgeController();
-            ClientsGrid.ItemsSource = controller.GetCartridges();
+            var cartridges = controller.GetCartridges();
+            ListCartridges.ItemsSource = cartridges;
         }
 
         private void New_Cartridge_Btn(object sender, System.Windows.RoutedEventArgs e)
@@ -34,6 +37,34 @@ namespace MVC_WPF.Views.Pages
             if (result == true)
             {
                 LoadCartridges();
+            }
+        }
+
+        private void EditCartridge_Btn(object sender, System.Windows.RoutedEventArgs e)
+        {
+
+        }
+
+        private void DeleteCartridge_Btn(object sender, System.Windows.RoutedEventArgs e)
+        {
+            if (ListCartridges.SelectedItem is CartridgeBase selectedCartridge)
+            {
+                var result = MessageBox.Show(
+                    $"Вы уверена, что хотите удалить картридж {selectedCartridge.ModelName}?",
+                    "Подтверждение", MessageBoxButton.YesNo, MessageBoxImage.Warning);
+                if (result == MessageBoxResult.Yes)
+                {
+                    var controller = new CartridgeController();
+                    if (controller.DeleteCartridge(selectedCartridge.Id))
+                    {
+                        MessageBox.Show("Картридж удалён");
+                        LoadCartridges(); // обновляем таблицу
+                    }
+                    else
+                    {
+                        MessageBox.Show("Ошибка при удалении картриджа");
+                    }
+                }
             }
         }
     }
