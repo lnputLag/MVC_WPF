@@ -162,6 +162,7 @@
     <Compile Include="Models\Cartridges\CartridgeType.cs" />
     <Compile Include="Models\Factories\CartridgeFactory.cs" />
     <Compile Include="Models\Suppliers\Supplier.cs" />
+    <Compile Include="Models\User\UserModel.cs" />
     <Compile Include="Views\Pages\InDevelopment\Processing.xaml.cs">
       <DependentUpon>Processing.xaml</DependentUpon>
     </Compile>

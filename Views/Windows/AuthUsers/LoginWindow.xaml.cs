@@ -1,6 +1,7 @@
 ﻿using MVC_WPF.Controllers;
 using MVC_WPF.Data.Database;
 using MVC_WPF.Helpers;
+using MVC_WPF.Models.User;
 using System;
 using System.ComponentModel;
 using System.Windows;
@@ -47,7 +48,8 @@ namespace MVC_WPF.Views
                 {
                     MessageBox.Show("Авторизация успешна!");
                     _isNavigation = true;
-                    MainWindow mainWindow = new MainWindow();
+                    var user = new UserModel { Username = login };
+                    MainWindow mainWindow = new MainWindow(user);
                     mainWindow.Show();
                     this.Close();
                 }

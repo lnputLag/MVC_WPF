@@ -9,21 +9,14 @@
         Icon="/Views/Image/icon.png">
     <Grid>
         <DockPanel>
+            
+            
             <Menu DockPanel.Dock="Top">
                 <MenuItem Header="911 Support">
                     <MenuItem Header="Отпуск" Click="MenuItem_Vecation"/>
                     <MenuItem Header="Переработки" Click="MenuItem_Processing"/>
                     <MenuItem Header="Журнал осмотра серверных" Click="MenuItem_Wotch_Server"/>
                 </MenuItem>
-                <!--<MenuItem Header="TMC">
-                    <MenuItem Header="Перемещение техники" />
-                    <MenuItem Header="Ремонт" />
-                    <MenuItem Header="Ответственные по участкам" />
-                    <MenuItem Header="Отчёт" />
-                </MenuItem>
-                <MenuItem Header="Администрирование">
-                    <MenuItem Header="Radmin" />
-                </MenuItem>-->
                 <MenuItem Header="Серверные">
                     <MenuItem Header="Серверная АБК-1" >
                     </MenuItem>
@@ -44,6 +37,14 @@
                     <MenuItem Header="О программе" Click="Info_Program" />
                 </MenuItem>
             </Menu>
+
+            <!-- StatusBar для отображения пользователя -->
+            <StatusBar DockPanel.Dock="Bottom" Background="LightGray">
+                <StatusBarItem HorizontalAlignment="Right">
+                    <TextBlock x:Name="UserTextBlock" FontWeight="Bold" Margin="0,0,10,0"/>
+                </StatusBarItem>
+            </StatusBar>
+
             <TabControl x:Name="MainTabControl" />
         </DockPanel>
     </Grid>

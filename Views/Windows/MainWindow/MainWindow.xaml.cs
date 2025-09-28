@@ -6,6 +6,7 @@ using System.ComponentModel;
 using System.Windows;
 using System.Windows.Controls;
 using MVC_WPF.Views.Pages.Sandbox;
+using MVC_WPF.Models.User;
 
 
 namespace MVC_WPF
@@ -15,13 +16,27 @@ namespace MVC_WPF
     /// </summary>
     public partial class MainWindow : Window
     {
-        public MainWindow()
+        private UserModel _currentUser;
+        public MainWindow(UserModel user)
         {
             InitializeComponent();
+            SetCurrentUser(user);
         }
 
         //Создание флага для определния типа закрытия
         private bool _isNavigation = false;
+
+        /// <summary>
+        /// Устанавливает текущего пользователя и обновляет отображение в StatusBar
+        /// </summary>
+        public void SetCurrentUser(UserModel user)
+        {
+            _currentUser = user;
+            if (_currentUser != null && UserTextBlock != null)
+            {
+                UserTextBlock.Text = $"Пользователь: {_currentUser.Username}";
+            }
+        }
 
         private void Main_Window_Closing(object sender, CancelEventArgs e)
         {
