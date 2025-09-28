@@ -8,11 +8,58 @@
       d:DesignHeight="450" d:DesignWidth="800"
       Title="WeatherApp">
 
-    <Grid Margin ="10" Background="White">
-        <Label Content="Погодная страница" HorizontalAlignment="Center" Margin="0,146,0,0" VerticalAlignment="Top" FontSize="20"/>
-        <TextBox x:Name="UserCityTextBox" HorizontalAlignment="Center" Margin="0,215,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="280"/>
-        <Button x:Name="GetWeatherBtn" Content="Получить погоду" HorizontalAlignment="Left" Margin="312,297,0,0" VerticalAlignment="Top" Click="GetWeatherBtn_Click"/>
-        <Label x:Name="WeatherResults" Content="" HorizontalAlignment="Center" Margin="0,363,0,0" VerticalAlignment="Top" Width="280"/>
+    <Grid Background="White" Margin="20">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <!-- Заголовок -->
+            <RowDefinition Height="Auto"/>
+            <!-- Ввод города -->
+            <RowDefinition Height="Auto"/>
+            <!-- Кнопка -->
+            <RowDefinition Height="*"/>
+            <!-- Результат -->
+        </Grid.RowDefinitions>
 
+        <!-- Заголовок -->
+        <TextBlock Text="Погодная страница"
+                   FontSize="20"
+                   FontWeight="Bold"
+                   HorizontalAlignment="Center"
+                   Margin="0,0,0,20"/>
+
+        <!-- Ввод города -->
+        <TextBox x:Name="UserCityTextBox"
+                 Grid.Row="1"
+                 Width="280"
+                 HorizontalAlignment="Center"
+                 VerticalAlignment="Center"
+                 Margin="0,0,0,15"
+                 />
+
+        <!-- Кнопка -->
+        <Button x:Name="GetWeatherBtn"
+                Grid.Row="2"
+                Content="Получить погоду"
+                Width="150"
+                HorizontalAlignment="Center"
+                Margin="0,0,0,15"
+                Click="GetWeatherBtn_Click"/>
+
+        <!-- Результат -->
+        <Border Grid.Row="3"
+                CornerRadius="8"
+                BorderBrush="LightGray"
+                BorderThickness="1"
+                Padding="10"
+                Background="#F9F9F9"
+                Width="280"
+                HorizontalAlignment="Center">
+            <TextBlock x:Name="WeatherResults"
+                       Text=""
+                       TextWrapping="Wrap"
+                       TextAlignment="Center"
+                       FontSize="14"
+                       Foreground="Black"/>
+        </Border>
     </Grid>
 </Page>

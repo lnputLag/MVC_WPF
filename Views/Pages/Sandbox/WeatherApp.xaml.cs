@@ -34,12 +34,12 @@ namespace MVC_WPF.Views.Pages.Sandbox
                 string data = await GetWeather(city);
                 var json = JObject.Parse(data);
                 string temp = json["main"]["temp"].ToString();
-                WeatherResults.Content = $"В городе {city} {temp} градусов";
+                WeatherResults.Text = $"В городе {city} {temp} градусов";
             }
             catch (HttpRequestException ex)
             {
                 MessageBox.Show("Укажите верный город");
-                WeatherResults.Content = "";
+                WeatherResults.Text = "";
             }
         }
 
