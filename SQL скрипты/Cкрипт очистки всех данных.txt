@@ -5,6 +5,6 @@ DROP TABLE IF EXISTS cartridge_statuses;
 DROP TABLE IF EXISTS cartridge_types;
 DROP TABLE IF EXISTS cartridge_models;
 DROP TABLE IF EXISTS suppliers;
+DROP TABLE IF EXISTS users;
 
 
-SHOW TABLE STATUS;
