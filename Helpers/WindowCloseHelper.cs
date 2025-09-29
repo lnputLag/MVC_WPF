@@ -6,6 +6,9 @@ namespace MVC_WPF.Helpers
 {
     public static class WindowCloseHelper
     {
+        /// <summary>
+        /// Основной метод для закртия окон
+        /// </summary>
         public static void ConfirmClose(Window window, CancelEventArgs e, bool isNavigation)
         {
             if (isNavigation) return;
@@ -22,6 +25,9 @@ namespace MVC_WPF.Helpers
             e.Cancel = (result == MessageBoxResult.No);
         }
 
+        /// <summary>
+        /// Метод для закрытия окна регистрации
+        /// </summary>
         public static void CloseRegistration(Window window, CancelEventArgs e, bool _isRegistrationSuccess)
         {
             if (_isRegistrationSuccess) return;
@@ -37,7 +43,6 @@ namespace MVC_WPF.Helpers
 
             if (result == MessageBoxResult.Yes)
             {
-                // Полный выход из приложения
                 Application.Current.Shutdown();
             }
             else

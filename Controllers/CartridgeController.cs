@@ -14,6 +14,9 @@ namespace MVC_WPF.Controllers
 {
     public class CartridgeController
     {
+        /// <summary>
+        /// Метод добавления картриджей
+        /// </summary>
         public bool AddCartridge(CartridgeBase cartridge)
         {
             if (cartridge == null)
@@ -34,6 +37,9 @@ namespace MVC_WPF.Controllers
             return result > 0;
         }
 
+        /// <summary>
+        /// Метод обновления информации о картриджах
+        /// </summary>
         public bool UpdateCartridges(CartridgeBase cartridge)
         {
             var parameters = new MySql.Data.MySqlClient.MySqlParameter[]
@@ -52,7 +58,9 @@ namespace MVC_WPF.Controllers
             return result > 0;
         }
 
-        //Метод удаления картриджей
+        /// <summary>
+        /// Метод удаления картриджей
+        /// </summary>
         public bool DeleteCartridge(int cartridgeId)
         {
             var parameters = new MySql.Data.MySqlClient.MySqlParameter[]

@@ -67,7 +67,7 @@ namespace MVC_WPF.Views
                     {
                         MessageBox.Show("Регистрация успешна!");
                         _isRegistrationSuccess = true;
-                        this.Owner?.Show(); // показываем окно авторизации
+                        this.Owner?.Show();
                         this.Close();
                     }
                     else

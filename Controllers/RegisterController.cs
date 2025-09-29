@@ -7,10 +7,11 @@ namespace MVC_WPF.Controllers
 {
     public class RegisterController
     {
-        ///<summary>
-        /// Проверяем существует ли пользователь
-        ///</summary>
-        
+        /// <summary>
+        /// Проверка существования пользователя
+        /// </summary>
+        /// <returns>true - если пользователь существует</returns>
+
         public bool UserExists(string login)
         {
             MySqlParameter[] checkParams = 
@@ -21,18 +22,17 @@ namespace MVC_WPF.Controllers
             object result = DBConnection.Instance.ExecuteScalar(
                 Data.SQL.RegisterUser.RegisterUserQueries.RegisterUser, checkParams);
 
-            // ExecuteScalar вернет количество (COUNT(*))
             int count = Convert.ToInt32(result);
-            return count > 0; //true если пользователь существует
+            return count > 0;
         }
 
         /// <summary>
         /// Регистрация нового пользователя
         /// </summary>
+        /// <returns>Если пользователь уже есть, не добавляем</returns>
 
         public bool NewRegisterUser(string login, string password)
         {
-            // Если пользователь уже есть — не добавляем
             if (UserExists(login))
                 return false;
 
@@ -45,7 +45,7 @@ namespace MVC_WPF.Controllers
             int result = DBConnection.Instance.ExecuteNonQuery(
                 Data.SQL.RegisterUser.NewRegisterUserQueries.NewRegisterUser, parameters);
 
-            return result > 0; // true если регистрация прошла успешно
+            return result > 0;
         }
     }
 }

@@ -18,39 +18,31 @@
             <RowDefinition Height="Auto"/>
         </Grid.RowDefinitions>
 
-
-        <!-- Модель картриджа -->
         <ComboBox x:Name="ModelComboBox" Grid.Row="0"
            materialDesign:HintAssist.Hint="Модель картриджа"
            Style="{StaticResource MaterialDesignFloatingHintComboBox}"
            Margin="0,0,0,8"/>
 
-
-        <!-- Тип (Чёрно/белый или цветной) -->
         <ComboBox x:Name="TypeComboBox" Grid.Row="1"
                   materialDesign:HintAssist.Hint="BW/Color"
                   Style="{StaticResource MaterialDesignFloatingHintComboBox}"
                   Margin="0,0,0,8"/>
 
-        <!--Количество--> 
         <TextBox x:Name="QuantityTextBox" Grid.Row="2"
           materialDesign:HintAssist.Hint="Количество картриджей"
           Style="{StaticResource MaterialDesignFloatingHintTextBox}"
           Margin="0,0,0,8"/>
 
-        <!-- Статус картриджа -->
         <ComboBox x:Name="StatusComboBox" Grid.Row="3"
                   materialDesign:HintAssist.Hint="Статус картриджа"
                   Style="{StaticResource MaterialDesignFloatingHintComboBox}"
                   Margin="0,0,0,8" />
 
-        <!-- Выбор поставщика -->
         <ComboBox x:Name="SupplierComboBox" Grid.Row="4"
                   materialDesign:HintAssist.Hint="Выбор поставщика"
                   Style="{StaticResource MaterialDesignFloatingHintComboBox}"
                   Margin="0,0,0,8" />
 
-        <!-- Кнопки -->
         <StackPanel Grid.Row="6" Orientation="Horizontal" HorizontalAlignment="Right">
             <Button Content="ОТМЕНА" 
                     Style="{StaticResource MaterialDesignOutlinedButton}"

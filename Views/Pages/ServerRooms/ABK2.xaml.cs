@@ -29,27 +29,30 @@ namespace MVC_WPF.Views.Pages
             LoadStatusFilter();
         }
 
+        /// <summary>
+        /// Загрузка картриджей
+        /// </summary>
         private void LoadCartridges()
         {
             var controller = new CartridgeController();
-            //var cartridges = controller.GetCartridges();
-            //ListCartridges.ItemsSource = cartridges;
             _allCartridges = controller.GetCartridges();
             ListCartridges.ItemsSource = _allCartridges;
         }
 
+        /// <summary>
+        /// Загрузка фильтра статусов
+        /// </summary>
         private void LoadStatusFilter()
         {
             var controller = new CartridgeController();
             var statuses = controller.GetStatuses();
 
-            // Добавляем "Все" для сброса фильтра
             statuses.Insert(0, new CartridgeStatus { Id = 0, StatusName = "Все" });
 
             StatusFilterComboBox.ItemsSource = statuses;
             StatusFilterComboBox.DisplayMemberPath = "StatusName";
             StatusFilterComboBox.SelectedValuePath = "Id";
-            StatusFilterComboBox.SelectedIndex = 0; // по умолчанию "Все"
+            StatusFilterComboBox.SelectedIndex = 0;
         }
 
         /// <summary>
@@ -62,12 +65,10 @@ namespace MVC_WPF.Views.Pages
             var selectedStatus = StatusFilterComboBox.SelectedItem as CartridgeStatus;
             if (selectedStatus == null || selectedStatus.Id == 0)
             {
-                // Показать все
                 ListCartridges.ItemsSource = _allCartridges;
             }
             else
             {
-                // Фильтруем по выбранному статусу
                 ListCartridges.ItemsSource = _allCartridges
                     .Where(c => c.Status != null && c.Status.Id == selectedStatus.Id)
                     .ToList();
@@ -82,31 +83,31 @@ namespace MVC_WPF.Views.Pages
             ApplyStatusFilter();
         }
 
-        // Кнопка добавления нового картриджа
         private void New_Cartridge_Btn(object sender, System.Windows.RoutedEventArgs e)
         {
             var newCartridge = new Windows.NewCartridge();
             bool? result = newCartridge.ShowDialog();
 
-            // если картридж успешно добавлен, обновляем список
             if (result == true)
             {
                 LoadCartridges();
             }
         }
 
-        //Кнопка редактирования
+        /// <summary>
+        /// Редактирование
+        /// </summary>
         private void EditCartridge_Btn(object sender, System.Windows.RoutedEventArgs e)
         {
             if (ListCartridges.SelectedItem is CartridgeBase selectedCartridge)
             {
                 var editWindow = new NewCartridge();
-                editWindow.LoadComboBoxes(); // сначала загружаем все ComboBox
-                editWindow.LoadCartridgeForEditing(selectedCartridge); // затем заполняем данные
+                editWindow.LoadComboBoxes(); 
+                editWindow.LoadCartridgeForEditing(selectedCartridge); 
                 bool? result = editWindow.ShowDialog();
                 if (result == true)
                 {
-                    LoadCartridges(); // обновляем таблицу
+                    LoadCartridges(); 
                 }
             }
             else
@@ -115,7 +116,9 @@ namespace MVC_WPF.Views.Pages
             }
         }
 
-        //Кнопка удаления
+        /// <summary>
+        /// Удаление
+        /// </summary>
         private void DeleteCartridge_Btn(object sender, System.Windows.RoutedEventArgs e)
         {
             if (ListCartridges.SelectedItem is CartridgeBase selectedCartridge)

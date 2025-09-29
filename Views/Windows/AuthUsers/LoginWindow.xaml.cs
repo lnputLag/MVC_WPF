@@ -17,7 +17,7 @@ namespace MVC_WPF.Views
         public LoginWindow()
         {
             InitializeComponent();
-            DBConnection.Instance.Init(); // вызываем Init через Singleton
+            DBConnection.Instance.Init(); 
         }
 
         private void Button_Window_Auth_Click(object sender, RoutedEventArgs e)
@@ -72,7 +72,6 @@ namespace MVC_WPF.Views
             registerWindow.Show();
         }
 
-        //Создание флага для определния типа закрытия
         private bool _isNavigation = false;
 
         private void Login_Window_Closing(object sender, CancelEventArgs e)

@@ -13,7 +13,6 @@ namespace MVC_WPF.Models.Cartridges
         public Supplier Supplier { get; set; }
         public int Quantity { get; set; }
 
-        // Метод, который будет выполнять действие заправки
         public abstract void Refill();
     }
 }

@@ -65,7 +65,6 @@ namespace MVC_WPF.Views.Windows
 
             _editingCartridge = cartridge;
 
-            // Устанавливаем выбранные элементы в ComboBox
             ModelComboBox.SelectedItem = ModelComboBox.Items
                 .Cast<CartridgeModel>()
                 .FirstOrDefault(m => m.Id == cartridge.ModelId);
@@ -82,10 +81,8 @@ namespace MVC_WPF.Views.Windows
                 .Cast<Supplier>()
                 .FirstOrDefault(sup => sup.Id == cartridge.Supplier.Id);
 
-            // Заполняем количество
             QuantityTextBox.Text = cartridge.Quantity.ToString();
 
-            // Меняем текст кнопки на "Сохранить изменения"
             SaveButton.Content = "Сохранить изменения";
         }
 
@@ -119,7 +116,6 @@ namespace MVC_WPF.Views.Windows
                     return;
                 }
 
-                // Получаем данные с формы
                 var selectedModel = ModelComboBox.SelectedItem as CartridgeModel;
                 var selectedType = TypeComboBox.SelectedItem as CartridgeType;
                 var selectedStatus = StatusComboBox.SelectedItem as CartridgeStatus;
@@ -130,7 +126,6 @@ namespace MVC_WPF.Views.Windows
 
                 if (_editingCartridge != null)
                 {
-                    // Обновляем существующий картридж
                     _editingCartridge.ModelId = selectedModel.Id;
                     _editingCartridge.TypeId = selectedType.Id;
                     _editingCartridge.ModelName = selectedModel.ModelName;

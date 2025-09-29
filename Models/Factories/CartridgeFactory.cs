@@ -52,7 +52,6 @@ namespace MVC_WPF.Models.Factories
                     break;
 
                 default:
-                    // Можно выбросить исключение или оставить null
                     cartridge = null;
                     break;
             }

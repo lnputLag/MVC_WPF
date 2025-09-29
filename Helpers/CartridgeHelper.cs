@@ -12,8 +12,10 @@ namespace MVC_WPF.Helpers
     public static class CartridgeHelper
     {
         /// <summary>
-        /// Метод удаления картриджа
+        /// Метод для удаления картриджа
         /// </summary>
+        /// <param name="selectedCartridge"></param>
+        /// <param name="reloadAction">обновляем таблицу (передаём метод как параметр)</param>
         public static void ConfirmDeleteCartridge(CartridgeBase selectedCartridge, System.Action reloadAction)
         {
             var result = MessageBox.Show(
@@ -28,7 +30,7 @@ namespace MVC_WPF.Helpers
                 if (controller.DeleteCartridge(selectedCartridge.Id))
                 {
                     MessageBox.Show("Картридж удалён");
-                    reloadAction?.Invoke(); // обновляем таблицу (передаём метод как параметр)
+                    reloadAction?.Invoke(); 
                 }
                 else
                 {

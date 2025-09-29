@@ -19,7 +19,6 @@ namespace MVC_WPF.Helpers
                 byte[] bytes = Encoding.UTF8.GetBytes(password);
                 byte[] hash = sha256.ComputeHash(bytes);
 
-                // переводим байты в строку hex
                 StringBuilder sb = new StringBuilder();
                 foreach (byte b in hash)
                 {

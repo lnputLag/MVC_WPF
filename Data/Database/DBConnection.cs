@@ -8,6 +8,9 @@ namespace MVC_WPF.Data.Database
 {
     public class DBConnection
     {
+        /// <summary>
+        /// Singleton через Instance
+        /// </summary>
         private string _connectionString;
 
         private static readonly Lazy<DBConnection> _instance=
