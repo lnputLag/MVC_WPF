@@ -23,7 +23,6 @@ namespace MVC_WPF
             SetCurrentUser(user);
         }
 
-        //Создание флага для определния типа закрытия
         private bool _isNavigation = false;
 
         /// <summary>
@@ -98,8 +97,8 @@ namespace MVC_WPF
 
         private void Info_Program(object sender, RoutedEventArgs e)
         {
-            MessageBox.Show("Данная программа разработана\n" +
-                "для Pet Project Курасова Дмитрия");
+            MessageBox.Show("Pet Project Курасова Дмитрия\n" +
+                "Хорошего Вам дня.");
         }
 
         private void MenuItem_Vecation(object sender, RoutedEventArgs e)
@@ -120,11 +119,6 @@ namespace MVC_WPF
         private void MenuItem_Weather_App(object sender, RoutedEventArgs e)
         {
             AddTab(new WeatherApp(), "Погода");
-        }
-
-        private void MenuItem_Notes(object sender, RoutedEventArgs e)
-        {
-            AddTab(new Notes(), "Заметки");
         }
     }
 }

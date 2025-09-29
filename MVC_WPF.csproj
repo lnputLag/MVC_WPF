@@ -175,9 +175,6 @@
     <Compile Include="Views\Pages\InDevelopment\WotchServer.xaml.cs">
       <DependentUpon>WotchServer.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Views\Pages\Sandbox\Notes.xaml.cs">
-      <DependentUpon>Notes.xaml</DependentUpon>
-    </Compile>
     <Compile Include="Views\Pages\Sandbox\WeatherApp.xaml.cs">
       <DependentUpon>WeatherApp.xaml</DependentUpon>
     </Compile>
@@ -199,10 +196,6 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Views\Pages\InDevelopment\WotchServer.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Views\Pages\Sandbox\Notes.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

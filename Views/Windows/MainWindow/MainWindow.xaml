@@ -29,9 +29,8 @@
                     <MenuItem Header="Серверная БДМ-2" />
                     <MenuItem Header="Серверная ЦЛТ" />
                 </MenuItem>
-                <MenuItem Header="Песочница">
+                <MenuItem Header="Sandbox">
                     <MenuItem Header="Погода" Click="MenuItem_Weather_App" />
-                    <MenuItem Header="Заметки" Click="MenuItem_Notes" />
                 </MenuItem>
                 <MenuItem Header="Справка">
                     <MenuItem Header="О программе" Click="Info_Program" />

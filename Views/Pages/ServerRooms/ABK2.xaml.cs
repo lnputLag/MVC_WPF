@@ -108,10 +108,10 @@ namespace MVC_WPF.Views.Pages
                 {
                     LoadCartridges(); // обновляем таблицу
                 }
-                else
-                {
-                    MessageBox.Show("Выберите картридж для редактирования.");
-                }
+            }
+            else
+            {
+                MessageBox.Show("Выберите картридж для редактирования.");
             }
         }
 
