@@ -30,14 +30,13 @@
                     <MenuItem Header="Серверная ЦЛТ" />
                 </MenuItem>
                 <MenuItem Header="Sandbox">
-                    <MenuItem Header="Погода" Click="MenuItem_Weather_App" />
+                    <MenuItem Header="Погода" Click="Weather_Click" />
                 </MenuItem>
                 <MenuItem Header="Справка">
                     <MenuItem Header="О программе" Click="Info_Program" />
                 </MenuItem>
             </Menu>
 
-            <!-- StatusBar для отображения пользователя -->
             <StatusBar DockPanel.Dock="Bottom" Background="LightGray">
                 <StatusBarItem HorizontalAlignment="Right">
                     <TextBlock x:Name="UserTextBlock" FontWeight="Bold" Margin="0,0,10,0"/>

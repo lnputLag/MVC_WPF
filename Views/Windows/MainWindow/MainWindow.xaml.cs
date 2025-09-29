@@ -5,8 +5,9 @@ using System;
 using System.ComponentModel;
 using System.Windows;
 using System.Windows.Controls;
-using MVC_WPF.Views.Pages.Sandbox;
 using MVC_WPF.Models.User;
+using MVC_WPF.Views.Windows;
+using MVC_WPF.Views.Windows.Sandbox;
 
 
 namespace MVC_WPF
@@ -116,9 +117,10 @@ namespace MVC_WPF
             AddTab(new WotchServer(), "Журнал");
         }
 
-        private void MenuItem_Weather_App(object sender, RoutedEventArgs e)
+        private void Weather_Click(object sender, RoutedEventArgs e)
         {
-            AddTab(new WeatherApp(), "Погода");
+            WeatherWindow weatherWindow = new WeatherWindow();
+            weatherWindow.Show();
         }
     }
 }
